@@ -272,7 +272,7 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.15, ease }}
             >
             <motion.div
-              className="from-cyan-500/60 via-violet-500/50 to-fuchsia-500/60 absolute inset-0 rounded-2xl bg-gradient-to-br opacity-80 blur-sm"
+              className="from-cyan-500/60 via-violet-500/50 to-fuchsia-500/60 pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br opacity-80 blur-sm"
               aria-hidden
               animate={
                 reduce
@@ -289,7 +289,10 @@ export function HeroSection() {
               <p className="text-fg-dim mb-3 w-full text-left text-xs font-semibold tracking-widest uppercase">
                 Profile
               </p>
-              <div className="to-slate-800/0 absolute -inset-1 rounded-2xl bg-gradient-to-b from-cyan-500/10" />
+              <div
+                className="to-slate-800/0 pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-b from-cyan-500/10"
+                aria-hidden
+              />
               <img
                 src={site.avatar}
                 width={208}
@@ -302,13 +305,11 @@ export function HeroSection() {
               </p>
               <p className="text-fg-dim text-center text-sm">{site.title}</p>
               <motion.a
-                href={fiverrReady ? fiverrProfileUrl : '#contact'}
-                className="text-cyan-400 mt-3 text-sm font-medium no-underline"
-                rel={fiverrReady ? 'noreferrer' : undefined}
-                target={fiverrReady ? '_blank' : undefined}
+                href="#contact"
+                className="text-cyan-400 relative z-10 mt-3 text-sm font-medium no-underline"
                 whileHover={reduce ? undefined : { x: 2 }}
               >
-                {fiverrReady ? 'Fiverr profile ↗' : 'Contact & details ↓'}
+                Contact &amp; details ↓
               </motion.a>
             </div>
           </motion.div>
