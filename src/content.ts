@@ -1,3 +1,5 @@
+import avatarUrl from './assets/1000386953.jpg';
+
 export const site = {
   name: 'Usama Yousaf',
   title: 'Full Stack Engineer',
@@ -7,7 +9,7 @@ export const site = {
   linkedin: 'https://www.linkedin.com/in/usama-yousaf--/',
   github: 'https://github.com/usamayousaf5000',
   siteUrl: 'https://example.com',
-  avatar: '/src/assets/1000386953.jpg',
+  avatar: avatarUrl,
 } as const
 
 /**
