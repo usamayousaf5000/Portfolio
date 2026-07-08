@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  /* Dark dev portfolio (Pinterest / “full stack” pin style) */
+  --color-surface-0: #020617;
+  --color-surface-1: #0f172a;
+  --color-surface-2: #1e293b;
+  --color-line: #334155;
+  --color-fg: #f1f5f9;
+  --color-fg-dim: #94a3b8;
+  --color-accent-cyan: #22d3ee;
+  --color-accent-violet: #a78bfa;
+  --color-accent-fuchsia: #e879f9;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply m-0 min-w-[320px] bg-surface-0 font-sans text-fg antialiased;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    @apply min-h-svh w-full;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent;
+  }
+
+  .glow-border {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-cyan-400) 30%, transparent),
+      0 0 40px -10px color-mix(in srgb, var(--color-cyan-400) 25%, transparent);
+  }
+
+  /* Ambient motion (disabled when user prefers reduced motion) */
+  .animate-float-soft {
+    animation: ambient-float-soft 6s ease-in-out infinite;
+  }
+
+  .animate-float-soft-delayed {
+    animation: ambient-float-soft 7s ease-in-out infinite 1.2s;
+  }
+
+  .animate-glow-pulse {
+    animation: ambient-glow-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes ambient-float-soft {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-8px) translateX(2px);
+    }
+  }
+
+  @keyframes ambient-glow-pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+      filter: blur(0);
+    }
+    50% {
+      opacity: 0.85;
+      filter: blur(0.5px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float-soft,
+    .animate-float-soft-delayed,
+    .animate-glow-pulse {
+      animation: none;
+    }
+  }
+}
